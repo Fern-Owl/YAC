@@ -36,9 +36,9 @@ function calc(operator, num1, num2) {
 
   if (isNaN(+num1) || isNaN(+num2)) {
     result = 'Error';
-  } else if (num1 == null || num1 == '') {
+  } else if (num1 === undefined) {
     result = 'Error';
-  } else if (num2 == null || num2 == '') {
+  } else if (num2 === undefined) {
     result = 'Error';
   } else {
     switch (operator) {
