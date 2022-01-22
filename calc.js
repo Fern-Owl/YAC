@@ -1,3 +1,11 @@
+/*
+I rewrited this version of the calculator for the node REPL environment.
+In order to use it, You should start node via the command line interface
+of your choice and type '.load calc.js'.
+The original version that I did for the first Frontend Maraphon is 
+located here https://github.com/Fern-Owl/GFM_Calculator 
+*/
+
 function calcExplainer() {
   console.log(`
   Welcome to the Calculator!

@@ -1,2 +1,4 @@
 # YAC
-Yet Another Calculator
+
+Yet Another Calculator.
+This one is for the node REPl environment.
