@@ -33,7 +33,7 @@ function calcHelp() {
 
 function calc(operator, num1, num2) {
   let result;
-  //Проверка на правильность ввода чисел.
+
   if (isNaN(+num1) || isNaN(+num2)) {
     result = 'Error';
   } else if (num1 == null || num1 == '') {
@@ -55,14 +55,14 @@ function calc(operator, num1, num2) {
         if (num2 != 0) {
           result = `${num1} / ${num2} = ${num1 / num2}`;
         } else {
-          result = `${num1} / ${num2} = ?\nНа ноль делить нельзя!`;
+          result = `${num1} / ${num2} = ?\nZero Division Error!`;
         }
         break;
       case 'mod':
         if (num2 != 0) {
           result = `${num1} % ${num2} = ${num1 % num2}`;
         } else {
-          result = `${num1} % ${num2} = ?\nНа ноль делить нельзя!`;
+          result = `${num1} % ${num2} = ?\nZero Division Error!`;
         }
         break;
       case 'pow':
