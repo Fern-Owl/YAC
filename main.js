@@ -96,7 +96,7 @@ function outputter() {
 
   let finalString = `${number1}${operator}${number2}`;
 
-  if (finalString.length > 15) {
+  if (finalString.length > 14) {
     display.style.fontSize = '20px';
   } else if (finalString.length > 5) {
     display.style.fontSize = '40px';
