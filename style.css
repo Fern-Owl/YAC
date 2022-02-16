@@ -12,9 +12,6 @@
   margin: 20px auto;
   background-color: #17171c;
   padding: 21px 20px 25px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .calc-display {
@@ -24,6 +21,7 @@
   color: #ffffff;
   font-weight: 300;
   font-size: 96px;
+  overflow: hidden;
   line-height: 96px;
   font-style: normal;
   text-align: right;
