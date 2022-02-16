@@ -61,8 +61,9 @@ calcKeys.forEach((key) =>
         display.innerText = `error`;
         clear();
       } else {
-        display.innerText = `${calculated}`;
         clear();
+        number1 = `${calculated}`;
+        outputter();
       }
     }
   })
