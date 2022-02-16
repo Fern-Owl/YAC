@@ -98,7 +98,7 @@ function outputter() {
 
   if (finalString.length > 15) {
     display.style.fontSize = '20px';
-  } else if (finalString.length > 6) {
+  } else if (finalString.length > 5) {
     display.style.fontSize = '40px';
   } else {
     display.style.fontSize = '96px';
