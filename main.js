@@ -65,6 +65,9 @@ calcKeys.forEach((key) =>
         number1 = `${calculated}`;
         outputter();
       }
+    } else if (!number2 && clickedKey === '=') {
+      operator = '';
+      outputter();
     }
   })
 );
@@ -76,13 +79,32 @@ function clear() {
 }
 
 function outputter() {
-  while (number1.length > 1 && number1.charAt(0) === '0') {
+  while (
+    number1.length > 1 &&
+    number1.charAt(0) === '0' &&
+    number1.charAt(1) !== '.'
+  ) {
     number1 = number1.substring(1);
   }
-  while (number2.length > 1 && number2.charAt(0) === '0') {
+  while (
+    number2.length > 1 &&
+    number2.charAt(0) === '0' &&
+    number2.charAt(1) !== '.'
+  ) {
     number2 = number2.substring(1);
   }
-  display.innerText = `${number1}${operator}${number2}`;
+
+  let finalString = `${number1}${operator}${number2}`;
+
+  if (finalString.length > 14) {
+    display.style.fontSize = '20px';
+  } else if (finalString.length > 5) {
+    display.style.fontSize = '40px';
+  } else {
+    display.style.fontSize = '96px';
+  }
+
+  display.innerText = finalString;
 }
 
 function Calc(oper, num1, num2) {
