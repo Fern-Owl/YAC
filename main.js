@@ -4,7 +4,7 @@ const digits = '0123456789';
 const operationSymbols = '÷×+-';
 
 let clickedKey;
-let number1 = '';
+let number1 = '0';
 let number2 = '';
 let operator = '';
 let calculated = 0;
@@ -44,10 +44,12 @@ calcKeys.forEach((key) =>
     } else if (clickedKey === 'clear') {
       clear();
       outputter();
-      display.innerText = '0';
     } else if (clickedKey === 'erase') {
       lastResultIsOnScreen = false;
-      if (number2.length === 1) {
+      if (
+        (number2.length === 2 && number2[0] === '-') ||
+        number2.length === 1
+      ) {
         number2 = '';
         outputter();
       } else if (number2) {
@@ -56,9 +58,12 @@ calcKeys.forEach((key) =>
       } else if (operator) {
         operator = '';
         outputter();
-      } else if (number1.length === 1) {
+      } else if (
+        (number1.length === 2 && number1[0] === '-') ||
+        number1.length === 1
+      ) {
         clear();
-        display.innerText = '0';
+        outputter();
       } else if (number1) {
         number1 = number1.slice(0, number2.length - 1);
         outputter();
@@ -83,7 +88,7 @@ calcKeys.forEach((key) =>
 );
 
 function clear() {
-  number1 = '';
+  number1 = '0';
   number2 = '';
   operator = '';
 }
