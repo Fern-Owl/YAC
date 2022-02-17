@@ -1,7 +1,7 @@
 const calcKeys = document.querySelectorAll('button');
 const display = document.getElementById('display');
 const digits = '0123456789';
-const operationSymbols = '/*+-';
+const operationSymbols = '÷×+-';
 
 let clickedKey;
 let number1 = '';
@@ -11,7 +11,7 @@ let calculated = 0;
 
 calcKeys.forEach((key) =>
   key.addEventListener('click', (mouseClick) => {
-    clickedKey = mouseClick.target.id;
+    clickedKey = mouseClick.currentTarget.id;
     if (!operator && digits.includes(clickedKey)) {
       number1 += clickedKey;
       outputter();
@@ -27,8 +27,9 @@ calcKeys.forEach((key) =>
     } else if (operator && number2 && operationSymbols.includes(clickedKey)) {
       calculated = Calc(operator, +number1, +number2);
       if (!isFinite(calculated)) {
-        display.innerText = `error`;
         clear();
+        outputter();
+        display.innerText = `error`;
       } else {
         number1 = `${calculated}`;
         number2 = '';
@@ -37,6 +38,7 @@ calcKeys.forEach((key) =>
       }
     } else if (clickedKey === 'clear') {
       clear();
+      outputter();
       display.innerText = '0';
     } else if (clickedKey === 'erase') {
       if (number2.length === 1) {
@@ -58,8 +60,9 @@ calcKeys.forEach((key) =>
     } else if (number2 && clickedKey === '=') {
       calculated = Calc(operator, +number1, +number2);
       if (!isFinite(calculated)) {
-        display.innerText = `error`;
         clear();
+        outputter();
+        display.innerText = `error`;
       } else {
         clear();
         number1 = `${calculated}`;
@@ -111,8 +114,8 @@ function Calc(oper, num1, num2) {
   const operations = {
     '+': +num1 + +num2,
     '-': num1 - num2,
-    '*': num1 * num2,
-    '/': num1 / num2,
+    '×': num1 * num2,
+    '÷': num1 / num2,
   };
 
   return operations[oper];
