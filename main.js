@@ -75,7 +75,7 @@ calcKeys.forEach((key) =>
         lastResultIsOnScreen = true;
         outputter();
       }
-    } else if (!number2 && clickedKey === '=') {
+    } else if (number1 && !number2 && clickedKey === '=') {
       operator = '';
       outputter();
     }
