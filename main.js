@@ -8,11 +8,16 @@ let number1 = '';
 let number2 = '';
 let operator = '';
 let calculated = 0;
+let lastResultIsOnScreen = false;
 
 calcKeys.forEach((key) =>
   key.addEventListener('click', (mouseClick) => {
     clickedKey = mouseClick.currentTarget.id;
     if (!operator && digits.includes(clickedKey)) {
+      if (lastResultIsOnScreen) {
+        number1 = '';
+        lastResultIsOnScreen = false;
+      }
       number1 += clickedKey;
       outputter();
     } else if (operator && digits.includes(clickedKey)) {
@@ -41,6 +46,7 @@ calcKeys.forEach((key) =>
       outputter();
       display.innerText = '0';
     } else if (clickedKey === 'erase') {
+      lastResultIsOnScreen = false;
       if (number2.length === 1) {
         number2 = '';
         outputter();
@@ -66,6 +72,7 @@ calcKeys.forEach((key) =>
       } else {
         clear();
         number1 = `${calculated}`;
+        lastResultIsOnScreen = true;
         outputter();
       }
     } else if (!number2 && clickedKey === '=') {
