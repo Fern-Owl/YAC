@@ -18,10 +18,14 @@ calcKeys.forEach((key) =>
         number1 = '';
         lastResultIsOnScreen = false;
       }
-      number1 += clickedKey;
+      if (number1.length < 13) {
+        number1 += clickedKey;
+      }
       outputter();
     } else if (operator && digits.includes(clickedKey)) {
-      number2 += clickedKey;
+      if (number2.length < 12) {
+        number2 += clickedKey;
+      }
       outputter();
     } else if (!operator && number1 && operationSymbols.includes(clickedKey)) {
       operator = clickedKey;
@@ -97,8 +101,12 @@ function outputter() {
   let num1Formatted;
   let num2Formatted;
 
-  num1Formatted = Number(number1).toLocaleString('en-US');
-  num2Formatted = !number2 ? '' : Number(number2).toLocaleString('en-US');
+  num1Formatted = Number(number1).toLocaleString('en-US', {
+    maximumFractionDigits: 15,
+  });
+  num2Formatted = !number2
+    ? ''
+    : Number(number2).toLocaleString('en-US', { maximumFractionDigits: 15 });
 
   let finalString = `${num1Formatted}${operator}${num2Formatted}`;
 
