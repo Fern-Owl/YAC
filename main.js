@@ -94,22 +94,13 @@ function clear() {
 }
 
 function outputter() {
-  while (
-    number1.length > 1 &&
-    number1.charAt(0) === '0' &&
-    number1.charAt(1) !== '.'
-  ) {
-    number1 = number1.substring(1);
-  }
-  while (
-    number2.length > 1 &&
-    number2.charAt(0) === '0' &&
-    number2.charAt(1) !== '.'
-  ) {
-    number2 = number2.substring(1);
-  }
+  let num1Formatted;
+  let num2Formatted;
 
-  let finalString = `${number1}${operator}${number2}`;
+  num1Formatted = Number(number1).toLocaleString('en-US');
+  num2Formatted = !number2 ? '' : Number(number2).toLocaleString('en-US');
+
+  let finalString = `${num1Formatted}${operator}${num2Formatted}`;
 
   if (finalString.length > 14) {
     display.style.fontSize = '20px';
