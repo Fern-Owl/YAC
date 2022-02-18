@@ -101,12 +101,12 @@ function outputter() {
   let num1Formatted;
   let num2Formatted;
 
-  num1Formatted = Number(number1).toLocaleString('en-US', {
-    maximumFractionDigits: 15,
-  });
-  num2Formatted = !number2
-    ? ''
-    : Number(number2).toLocaleString('en-US', { maximumFractionDigits: 15 });
+  if (number1.includes('.') || number1.includes('e')) {
+    num1Formatted = number1;
+  } else {
+    num1Formatted = Number(number1).toLocaleString('en-US');
+  }
+  num2Formatted = !number2 ? '' : Number(number2).toLocaleString('en-US');
 
   let finalString = `${num1Formatted}${operator}${num2Formatted}`;
 
